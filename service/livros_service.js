@@ -13,7 +13,7 @@ exports.inserir = async function (livro) {
     livro.ano &&
     livro.edicao &&
     livro.editora &&
-    livro.usuario
+    livro.imagem
   ) {
     return livrosRepository.inserir(livro);
   } else {

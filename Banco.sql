@@ -44,8 +44,8 @@ CREATE TABLE Livros (
     Imagem VARCHAR(255),
     Editora INT, -- Foreign Key para a tabela Editora
     CONSTRAINT fk_autor FOREIGN KEY (Autor) REFERENCES Autores(ID),
-    CONSTRAINT fk_editora FOREIGN KEY (Editora) REFERENCES Editora(ID),
-    CONSTRAINT fk_usuario FOREIGN KEY (Usuario) REFERENCES Usuarios(ID));
+    CONSTRAINT fk_editora FOREIGN KEY (Editora) REFERENCES Editora(ID);
+
 
 -- Tabela de Livros Retirados
 CREATE TABLE Livros_Retirados (
@@ -114,18 +114,18 @@ INSERT INTO Bibliotecario (Nome, CPF, Senha, Email, Telefone, D_E_L_E_T_E) VALUE
 ('Marcelo Ferreira', '90123456789', 'senha116', 'marcelo.ferreira@email.com', '(51) 94433-2222', FALSE),
 ('Gustavo Martins', '01234567890', 'senha117', 'gustavo.martins@email.com', '(51) 93322-1111', FALSE);
 
-INSERT INTO Livros (Titulo, Autor, ISBN, Ano, Edicao, Imagem, Editora, Usuario)
+INSERT INTO Livros (Titulo, Autor, ISBN, Ano, Edicao, Imagem, Editora)
 VALUES
-('A Arte da Guerra', 1, '9788535918378', 2009, '1ª Edição', 'public/assets/img/imagem.pnj', 1, 1),
-('O Senhor dos Anéis - A Sociedade do Anel', 2, '9788544100155', 1954, '1ª Edição', 'public/assets/img/imagem.pnj', 2, 2),
-('1984', 3, '9780451524935', 1949, '1ª Edição', 'public/assets/img/imagem.pnj', 3, 3),
-('Dom Quixote', 4, '9788535912611', 1605, '1ª Edição', 'public/assets/img/imagem.pnj', 4, 4),
-('O Pequeno Príncipe', 5, '9788520920038', 1943, '1ª Edição', 'public/assets/img/imagem.pnj', 5, 5),
-('Cem Anos de Solidão', 6, '9788580441947', 1967, '1ª Edição', 'public/assets/img/imagem.pnj', 6, 6),
-('O Hobbit', 2, '9788544103170', 1937, '1ª Edição', 'public/assets/img/imagem.pnj', 2, 7),
-('A Revolução dos Bichos', 3, '9780451526342', 1945, '1ª Edição', 'public/assets/img/imagem.pnj', 3, 8),
-('O Primo Basílio', 4, '9788520920113', 1878, '1ª Edição', 'public/assets/img/imagem.jpeg', 4, 9),
-('A Metamorfose', 7, '9788535918699', 1915, '1ª Edição', 'public/assets/img/imagem.jpeg', 7, 10);
+('A Arte da Guerra', 1, '9788535918378', 2009, '1ª Edição', 'public/assets/img/imagem.pnj', 1),
+('O Senhor dos Anéis - A Sociedade do Anel', 2, '9788544100155', 1954, '1ª Edição', 'public/assets/img/imagem.pnj', 2),
+('1984', 3, '9780451524935', 1949, '1ª Edição', 'public/assets/img/imagem.pnj', 3),
+('Dom Quixote', 4, '9788535912611', 1605, '1ª Edição', 'public/assets/img/imagem.pnj', 4),
+('O Pequeno Príncipe', 5, '9788520920038', 1943, '1ª Edição', 'public/assets/img/imagem.pnj', 5),
+('Cem Anos de Solidão', 6, '9788580441947', 1967, '1ª Edição', 'public/assets/img/imagem.pnj', 6),
+('O Hobbit', 2, '9788544103170', 1937, '1ª Edição', 'public/assets/img/imagem.pnj', 2),
+('A Revolução dos Bichos', 3, '9780451526342', 1945, '1ª Edição', 'public/assets/img/imagem.pnj', 3),
+('O Primo Basílio', 4, '9788520920113', 1878, '1ª Edição', 'public/assets/img/imagem.jpeg', 4),
+('A Metamorfose', 7, '9788535918699', 1915, '1ª Edição', 'public/assets/img/imagem.jpeg', 7);
 
 INSERT INTO Livros_Retirados (Livro, Usuario, Data_Retirada, Data_Devolucao, Data_Devolvido, Multa) VALUES
 (1, 1, '2024-10-01', '2024-10-15', NULL, 0.00),

@@ -15,8 +15,9 @@ exports.listar = async function () {
 
 exports.inserir = async function (obj) {
   try {
+    console.log(obj)
     const res = await client.query(
-      'INSERT into livros (titulo, autor, isbn, ano, edicao, editora, usuario) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+      'INSERT into livros (titulo, autor, isbn, ano, edicao, editora,imagem) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
       Object.values(obj)
     );
     return res.rows[0];
@@ -31,7 +32,10 @@ exports.inserir = async function (obj) {
 
 exports.buscarPorId = async function (id) {
   try {
-    const res = await client.query('SELECT * FROM livros WHERE id = $1', [id]);
+    const res = await client.query(`select l.titulo, a.nome as autor,l.isbn,l.ano,l.edicao,l.imagem,e.nome as editora from livros l
+join autores  a on l.autor = a.id
+join editora e on l.editora = e.id
+where l.id = $1`, [id]);
     return res.rows[0];
   } catch (err) {
     throw {
